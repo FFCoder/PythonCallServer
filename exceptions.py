@@ -1,0 +1,2 @@
+class MCESException(Exception):
+	pass
