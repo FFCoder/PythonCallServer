@@ -1,4 +1,6 @@
 from utils import MCESException
+from dateutil.parser import parse
+import uuid
 
 
 class Unit(object):
@@ -40,10 +42,10 @@ class Unit(object):
 
         }
         self.name = varSet[self.uShort][0]
-        self.stationNumber = varSet[self.uShort][0]
+        self.stationNumber = varSet[self.uShort][1]
 
     def __validateShortCode__(self):
-        if self.uShort.startswith(("E", "S", "ALL", "CMD")):
+        if self.uShort.startswith(("E", "SQ", "ALL", "CMD")):
             return True
         else:
             raise MCESException("Unit Short Code is Invalid")
@@ -60,7 +62,11 @@ class Call(object):
         rawArray1 = mString.split("_")
         if ("/" in rawArray1[0]):
             self.unit = Unit(rawArray1[0].split("/")[-1])
+        dFormat = rawArray1[1][0:-2] + " " +rawArray1[1][-2::]+":"+rawArray1[2]+":"+rawArray1[3]
+        self.date = parse(dFormat)
+        self.uID = uuid.uuid4()
+
+
 
 
 x = Call(open("/home/jonathon/Music/SQ4_2015-11-2506_05_11_637850.mp3", "r"))
-print x.unit.name
