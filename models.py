@@ -53,6 +53,7 @@ class Unit(object):
 
 
 class Call(object):
+    """This object represents a 'Call' such as when units get paged out it is called a Call."""
     def __init__(self, mp3File):
         self.mFile = mp3File
         self.__parse__()
@@ -69,4 +70,6 @@ class Call(object):
 
 
 
-x = Call(open("/home/jonathon/Music/SQ4_2015-11-2506_05_11_637850.mp3", "r"))
+
+
+
