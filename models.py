@@ -36,6 +36,7 @@ class Unit(object):
             "E11": ("Engine 11", 11),
             "E12": ("Engine 12", 12),
             "E14": ("Engine 14", 14),
+            "Sq1": ("Squad 1", 1),
             "SQ1": ("Squad 1", 1),
             "SQ4": ("Squad 4", 4),
             "SQ12": ("Squad 12", 12)
@@ -45,7 +46,7 @@ class Unit(object):
         self.stationNumber = varSet[self.uShort][1]
 
     def __validateShortCode__(self):
-        if self.uShort.startswith(("E", "SQ", "ALL", "CMD")):
+        if self.uShort.startswith(("E", "SQ", "ALL", "CMD","Sq")):
             return True
         else:
             raise MCESException("Unit Short Code is Invalid")
