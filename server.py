@@ -12,7 +12,7 @@ parseAppId = ""
 parseRESTKey = ""
 
 class MyHandler(PatternMatchingEventHandler):
-    patterns = ["*.wav","*.mp3"]
+    patterns = ["*.mp3"]
 
 
     def on_created(self, event):
