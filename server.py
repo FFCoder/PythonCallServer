@@ -17,7 +17,8 @@ class MyHandler(PatternMatchingEventHandler):
 
     def on_created(self, event):
         print "New Call Found"
-        x = Call(open(event.src_path))
+        filepath = event.src_path.encode('ascii','ignore')
+        x = Call(open(filepath))
         handle = handler(x,parseAppId,parseRESTKey)
         print "Sending to Parse.com"
         handle.send()
